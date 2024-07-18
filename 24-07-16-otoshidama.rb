@@ -15,23 +15,15 @@ end
 
 # 4.回答コード
 def kane(n, y)
-  res10000 = -1
-  res5000 = -1
-  res1000 = -1
+  _i, _j, _k = -1, -1, -1
 
-  (0..n).each do |a|  # 10000円の枚数を 0 〜 N で調べる
-    (0..(n - a)).each do |b|  # 5000円の枚数を 0 〜 N-a で調べる
-      c = n - a - b  # 1000円の枚数は決まる
-      total = 10000 * a + 5000 * b + 1000 * c
-      if total == y  # 答えが見つかったら
-        res10000 = a
-        res5000 = b
-        res1000 = c
-        break
+  (0..n).each do |i|
+      (0..n-i).each do |j|
+        if i * 10000 + j * 5000 + (n - i - j) * 1000 == y
+            _i, _j, _k = i, j, n - i - j
+        end
       end
-    end
-    break if res10000 != -1  # 既に答えが見つかっている場合はループを抜ける
   end
 
-  "#{res10000} #{res5000} #{res1000}"
+  "#{_i} #{_j} #{_k}"
 end
