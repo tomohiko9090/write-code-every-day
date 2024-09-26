@@ -1,3 +1,4 @@
+require 'pry'
 class User
   @@users = []
 
@@ -6,7 +7,9 @@ class User
   def initialize(name, email)
     @name = name
     @email = email
+    p self
     @@users << self
+    p self
   end
 
   # インスタンスメソッド
